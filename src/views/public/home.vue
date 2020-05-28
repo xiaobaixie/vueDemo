@@ -7,9 +7,9 @@
     </div>
     <el-button @click="logout">退出</el-button>
   </el-header>
-  <el-container>
+  <el-container class="contentContainer">
     <el-aside width="200px">
-      <el-menu background-color="#409EFF" text-color="#303133" active-text-color="#409EFF" unique-opened router
+      <el-menu text-color="#303133" active-text-color="#409EFF" unique-opened router
       :default-active="activePath">
       <el-menu-item index="1">
         <i class="el-icon-s-home"></i>
@@ -38,7 +38,7 @@
       </el-submenu>
       </el-menu>
     </el-aside>
-    <el-main>
+    <el-main style="height:100%">
       <router-view />
     </el-main>
   </el-container>
@@ -70,10 +70,9 @@ export default {
 </script>
 
 <style scoped>
-  .home-containter {
+  .home-containter{
     height: 100%;
   }
-
  .el-header {
     background-color: #ffffff;
     display: flex;
@@ -83,19 +82,18 @@ export default {
     color: #333;
     font-size: 20px;
   }
+  .contentContainer{
+    height: 100%;
+  }
 
   .el-aside {
-    /* background-color: #ffffff; */
-    display: block;
-    display: block;
-    position: relative;
-    overflow-y: scroll;
-    background-color: #3c6e97 !important;
+    height: 100%;
   }
   .el-main {
     background-color: #ffffff;
   }
   .el-menu {
+    height: 100%;
     border-right: 10px;
   }
   </style>

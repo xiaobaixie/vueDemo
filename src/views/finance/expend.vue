@@ -5,18 +5,14 @@
       <el-breadcrumb-item><a href="/">支出中心</a></el-breadcrumb-item>
     </el-breadcrumb>
     <el-card>
-      <el-row :gutter="20">
-        <el-col :span="7">
+      <el-row class="filterCard" :gutter="20">
           <el-date-picker v-model="queryInfo.startDate" type="date" placeholder="开始日期" value-format="yyyy-MM-dd" />
           -
           <el-date-picker v-model="queryInfo.endDate" type="date" placeholder="结束日期" value-format="yyyy-MM-dd" />
-          <el-input placeholder="请输入内容" v-model="queryInfo.expendName" clearable @clear="listExpend">
+          <el-input style="width:auto" placeholder="请输入内容" v-model="queryInfo.expendName" clearable @clear="listExpend">
             <el-button slot="append" icon="el-icon-search" @click="listExpend"></el-button>
           </el-input>
-        </el-col>
-        <el-col :span="4">
           <el-button type="primary" @click="addDialogVisible = true">添加支出</el-button>
-        </el-col>
       </el-row>
       <el-table :data="expendList" stripe height="250" border style="width: 100%" max-height="250" show-summary>
         <el-table-column label="序号" type="index" fixed/>
@@ -195,7 +191,7 @@ export default {
         data: JSON.stringify(this.addForm)
       }).then(res => {
         if (res.code === '00') {
-          this.$msg.success('添加用户成功')
+          this.$msg.success('添加支出成功')
           this.addDialogVisible = false
           this.listExpend()
         } else {
@@ -257,6 +253,10 @@ export default {
 
   .el-card {
     box-shadow: 0 1px 1px rgb(0, 0, 0, 0.15) !important;
+  }
+  .filterCard{
+    margin-left: 0 !important;
+    text-align: left;
   }
   .el-table {
     margin-top: 15px;
